@@ -1,0 +1,86 @@
+/*
+KATA DRAFT CREATED FOR CODEWARS
+See kata description and instructions after the code and test results.
+
+Both the snippet of code below and the variants of the basic regex that follow it work fine on Firefox Dev, on http://www.webtoolkitonline.com/javascript-tester.html and on repl.it (asked E. to try it on that), but Codewars won't validate any of the four versions, nor any of the other versions I submitted.
+
+In addition to those listed below, I tried using the decimal or hexadecimal equivalents to the unicode codes, with and without the separately listed Eszett. 
+According to the literature, not all regex 'flavours' support unicode codes, and one post on Gitter asserts that the  &#yyyy; format should be used, without, however, clarifying whether this refers to decimal or hex equivalents. So it may be that Codewars doesn't deal with unicode coding in regexes in the same way as Firefox Dev., repl.it etc. do.
+The additionally tested variants:
+  ß\&#65;-\&#383;
+  \&#65;-\&#383;
+  ß\&#41;-\&#x17f;
+  \&#41;-\&#x17f;
+None of these worked on Codewars.
+*/
+
+//The kata code that works on Firefox Dev. (the returned results follow the code) repl.it, webtoolkitonline.com, but not on Codewars:
+
+  function proofDraft(draft) {
+  var draftMod = draft.replace(/ß/gi, 'ss').replace(/å/gi, 'aa');																		
+  var findRepeats = /\b([a-zA-Zß\u0080-\u00FF]+)\s+\1\b/gi;		
+  var proofs = draftMod.match(findRepeats); 
+  return proofs;
+  }
+
+proofDraft('Prof. Süsskind Süsskind and fast panting Jin-Jin, his tail tense, stepped forward with trepidation. The sudden rumble and roar of of the heaving ground made Salomé Weiß     Weiß duck instinctively - and just in time to avoid the boulder that crashed with a thud inches above her head. "That was close", whispered  Søren Søren Årndt to Jan Lærke Lærke, but the latter stood transfixed: the collapsed rocks had revealed a mysterious inscription: " La côte côte des 3579 3579 esprits oubliés oubliés sont en Åland Åland" stuttered Señor Señor François François, as was his wont. Aríaðna   Aríaðna cast an annoyed glance at him. "I have never ever ever seen anything like it", murmured Baron  Pitoëff  Pitoëff (that was actually his name).');
+
+
+// RESULTS ON FIREFOX DEV.:
+/*
+Süsskind Süsskind,of of,Weiss     Weiss,Søren Søren,Lærke Lærke,côte côte,oubliés oubliés,aaland aaland,Señor Señor,François François,Aríaðna   Aríaðna,ever ever,Pitoëff  Pitoëff
+*/
+/*
+//RESULTS ON www.webtoolkitonline.com/javascript-tester.html:
+[…]
+​
+0: "Süsskind Süsskind"
+​
+1: "of of"
+​
+2: "Weiss     Weiss"
+​
+3: "Søren Søren"
+​
+4: "Lærke Lærke"
+​
+5: "côte côte"
+​
+6: "oubliés oubliés"
+​
+7: "aaland aaland"
+​
+8: "Señor Señor"
+​
+9: "François François"
+​
+10: "Aríaðna   Aríaðna"
+​
+11: "ever ever"
+​
+12: "Pitoëff  Pitoëff"
+​
+length: 13
+​
+__proto__: Array []
+javascript-tester.html:34:19
+
+*/
+
+/*
+KATA DESCRIPTION
+One of the basic tasks of proofreaders is to try and capture inadvertently repeated words in the text they’re editing. Almost all word-processing software provide such a tool – for instance, Word for Windows has the ‘Find’ command, which can capture a wide range of letter characters in various languages (as well as special characters and formatting).
+Your task is to create a simpler tool that will capture all duplicate words in a text that contains words in English, French, German, Danish, Swedish, and Spanish and return them in a single array. 
+RESTRICTIONS AND THINGS TO NOTE:
+1. The words in the draft text may contain any character from the respective modern alphabet and your tool must be capable of capturing all duplicate words with any characters from the specified languages, so long as they’re separated by one or more spaces.
+2. Your proofing tool must capture only entire words, so you must make sure that it doesn’t capture repeated blocks of numbers (such as ‘2225 2225’) or of special characters (such as ‘---  ---‘).
+3. Your proofing tool must be capable of capturing duplicate words regardless of case and of the number of spaces that separates them (e.g. it should catch both ‘Two two’ and ‘two    two’).
+4. As in real life, whether the duplicate words should be deleted or not is up to the proofreader to decide. So your proofing tool should not delete or replace with something else the duplicate words it captures (for instance, a proofreader would not delete the second and third ‘ho’ in ‘He’s really really nice’).
+TIPS:
+1. Javascript still has a strong Anglosaxon bias. 
+Which means that capturing characters from non-English alphabets  isn’t always as easy as it ought to be.
+2. The proofing tool has real-life practical uses.
+The tool you’re invited to create represents a (basic) solution to a real-life problem proofreaders who work online may face. 
+3. The proofing tool is expandable and thus versatile.
+The sample text contains several characters from the alphabets specified further up, but the selection is not exhaustive. You may well decide to try out other texts with different characters and, if you do, you may discover that your proofing tool doesn’t capture all duplicate words. However, whether you come up with a basic or more advanced solution, it should be possible to adapt it so that it deals successfully with just about any character you throw at it.
+*/
