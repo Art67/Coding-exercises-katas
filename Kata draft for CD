@@ -4,7 +4,7 @@ Have tested for duplicates including the following characters and patterns:
 
 -- plain English / basic Latin characters
 ü
-ß
+ß   
 ø
 æ
 ô
@@ -19,6 +19,7 @@ Have tested for duplicates including the following characters and patterns:
 -- Varying numbers of spaces between repeated words
 -- A duplicate word with an adcacent special character (closing double quotes in this case)
 -- A duplicate word with an adcacent punctuation mark (a comma in this case)
+-- NB I included the Eszett ('ß') explicitly in the code because initial tests didn't catch it. However, I only included the standard lower-case letter, because the capital version only exists as a newly introduced glyph; no authoritative German dictionary lists any words spelled with a capital Eszett. See https://en.wikipedia.org/wiki/%C3%9F
 ------------------------------------------------------------------------------------------------------------------
 */
 
