@@ -3,6 +3,9 @@
 1. ## JS - equilibrium index in array / crude solution
 https://repl.it/@Art67/JS-equilibrium-index-in-array-crude-solution
 
+1a. ## JS - equilibrium index in array / variation
+https://repl.it/@Art67/JS-equilibrium-index-in-array-variation
+
 2. ## Draft for Smallest Integer kata
 https://repl.it/@Art67/Draft-for-Smallest-Integer-kata
 
